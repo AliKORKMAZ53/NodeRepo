@@ -1,0 +1,17 @@
+const express= require('express');
+const genresjs= require('../routes/genres.js');
+const customers= require('../routes/customers.js');
+const auth=require('../routes/auth');
+const users=require('../routes/users');
+const error= require('../middleware/error');
+
+
+module.exports=function(app){
+	
+	app.use(express.json());
+	app.use('/genres',genresjs);
+	app.use('/customers', customers);
+	app.use('/auth',auth);
+	app.use('/users',users);
+	app.use(error);
+}

@@ -1,0 +1,30 @@
+{
+  "name": "vidly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vidly.js",
+  "scripts": {
+    "test": "jest tests --watchAll --verbose --coverage --runInBand",
+    "dev": "nodemon population.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "joi": "^17.1.1",
+    "joi-objectid": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.19",
+    "mongoose": "^5.9.25",
+    "nodemon": "^2.0.4",
+    "winston": "^3.3.3",
+    "winston-mongodb": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^26.4.0",
+    "supertest": "^3.0.0"
+  }
+}
