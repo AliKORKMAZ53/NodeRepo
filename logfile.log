@@ -750,3 +750,7 @@
 {"message":"connected to mongodb://localhost/vidly_test","level":"info"}
 {"message":"listening port 4000...","level":"info"}
 {"message":"connected to mongodb://localhost/vidly_test","level":"info"}
+{"message":"listening port 4000...","level":"info"}
+{"message":"connected to there","level":"info"}
+{"message":"listening port 4000...","level":"info"}
+{"message":"connected to there","level":"info"}
