@@ -5,8 +5,9 @@ const config=require('config');
 module.exports= function(){
 	
 	const db=config.get('db');
-	mongoose.connect(db,{ useNewUrlParser: true,useUnifiedTopology: true })
-	.then(()=>{ winston.info('connected to '+ db);
+	mongoose.connect(db,{ useNewUrlParser: true,useUnifiedTopology: true, useMongoClient: true })
+	.then(()=>{ winston.info('connected to '+ db)
+	.catch(error=>console.log(error));
 	console.log('connected to '+ db);});
 	
 	
