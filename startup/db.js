@@ -3,7 +3,7 @@ const { MongoClient } = require("mongodb");
 
 
 module.exports= function(){
-	 const uri= "mongodb://conqueror53:conqueror53@cluster0.jjv7i.azure.mongodb.net/vidlydb?retryWrites=true&w=majority";
+	 const uri= "mongodb://<dbuser>:<dbpassword>@ds013486.mlab.com:13486/heroku_0bsffdlr";
 	const client = new MongoClient(uri);
 	
 	async function run() {
