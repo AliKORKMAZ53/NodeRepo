@@ -11,7 +11,7 @@ require('./startup/prod')(app);
 /*const p=Promise.reject(new Error('smthng went wrong'));
 p.then(()=>console.log('done')); unhandled rejection error trial */
 
-const port= process.env.port|| 4000;
+const port= process.env.PORT|| 4000;
 const server=app.listen(port, ()=> winston.info('listening port '+port+'...'));
 console.log(process.env);
 
