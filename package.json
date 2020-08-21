@@ -30,10 +30,12 @@
     "mongoose": "^5.9.25",
     "nodemon": "^2.0.4",
     "winston": "^3.3.3",
-    "winston-mongodb": "^5.0.1"
+    "winston-mongodb": "^5.0.1",
+	"jest": "^26.4.1",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
-    "jest": "^26.4.0",
+    "jest": "^26.4.1",
     "supertest": "^3.0.0"
   }
 }
