@@ -30,6 +30,7 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.25",
     "nodemon": "^2.0.4",
+    "npm-i": "0.0.2",
     "supertest": "^3.4.2",
     "winston": "^3.3.3",
     "winston-mongodb": "^5.0.1"
