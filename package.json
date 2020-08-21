@@ -21,6 +21,7 @@
     "express-async-errors": "^3.1.1",
     "fawn": "^2.1.5",
     "helmet": "^4.1.0",
+    "jest": "^26.4.1",
     "joi": "^17.1.1",
     "joi-objectid": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
@@ -29,13 +30,9 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.25",
     "nodemon": "^2.0.4",
+    "supertest": "^3.4.2",
     "winston": "^3.3.3",
-    "winston-mongodb": "^5.0.1",
-	"jest": "^26.4.1",
-    "supertest": "^3.0.0"
+    "winston-mongodb": "^5.0.1"
   },
-  "devDependencies": {
-    "jest": "^26.4.1",
-    "supertest": "^3.0.0"
-  }
+  "devDependencies": {}
 }
