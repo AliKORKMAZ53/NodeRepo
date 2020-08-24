@@ -1,0 +1,25 @@
+$env:vidly_jwtPrivateKey="mySecureKey"
+
+git degisiklik deneme
+
+git ikinci deneme
+
+yeni branch push lama
+
+git push origin [name_of_your_new_branch]
+
+yeni branch açma veya o addaki branch a geçme
+
+git checkout [name_of_your_new_branch]
+
+branch ları görme
+
+git branch
+
+
+server bağlantıları
+
+mongodb://heroku_0bsffdlr:aliko1@ds013486.mlab.com:13486/heroku_0bsffdlr
+
+mongodb+srv://conqueror53:conqueror53@cluster0.jjv7i.azure.mongodb.net/vidlydb?retryWrites=true&w=majority
+

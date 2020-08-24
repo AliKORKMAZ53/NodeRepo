@@ -15,6 +15,12 @@ router.get('/', async(req,res,next)=>{
 		res.send(genres);	
 });
 
+router.get('/q', async(req,res,next)=>{
+	
+		const genres= await Genre.find({name: req.query.name}).exec();
+		res.send(genres);	
+});
+
 router.get('/:id', validateObjectId, async(req,res)=>{
 	
 	const genre= await Genre.findById(req.params.id);

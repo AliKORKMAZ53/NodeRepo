@@ -8,7 +8,7 @@ module.exports= function(){
 	mongoose.set('useNewUrlParser', true);
 	mongoose.set('useFindAndModify', false);
 	//const db=config.get('db');
-	mongoose.connect(process.env.MONGODB_URI)
+	mongoose.connect(process.env.MONGODB_URI) // if you want local use 'mongodb://localhost'
 	.then( () => {
     console.log('Connection to the Atlas Cluster is successful!')
     })
