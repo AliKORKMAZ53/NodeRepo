@@ -18,7 +18,8 @@ router.get('/', async(req,res,next)=>{
 router.get('/q', async(req,res,next)=>{
 	
 		const genres= await Genre.find({name: req.query.name}).exec();
-		res.send(genres);	
+		if(!genres) return res.status(404).send("The genre not found with that name")
+		else res.send(genres);	
 });
 
 router.get('/:id', validateObjectId, async(req,res)=>{

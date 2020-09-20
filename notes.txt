@@ -16,6 +16,10 @@ branch ları görme
 
 git branch
 
+master olmayan newherokuya pushlama
+
+git push origin newheroku:master
+
 
 server bağlantıları
 
