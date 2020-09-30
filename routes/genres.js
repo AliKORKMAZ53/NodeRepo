@@ -17,9 +17,16 @@ router.get('/', async(req,res,next)=>{
 
 router.get('/q', async(req,res,next)=>{
 	
-		const genres= await Genre.find({name: req.query.name}).exec();
-		if(!genres) return res.status(404).send("The genre not found with that name")
-		else res.send(genres);	
+		let genres=await Genre.find({name: req.query.name},function(err,genre){
+			if(genre.length==0) return res.status(404).send("not found");
+			//this fucker never return error so this is the solution...
+			
+			res.send(genre);
+		});
+		
+		
+		
+	
 });
 
 router.get('/:id', validateObjectId, async(req,res)=>{

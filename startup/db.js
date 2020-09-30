@@ -8,12 +8,12 @@ module.exports= function(){
 	mongoose.set('useNewUrlParser', true);
 	mongoose.set('useFindAndModify', false);
 	//const db=config.get('db');
-	mongoose.connect(process.env.MONGODB_URI) // if you want local use 'mongodb://localhost'
+	mongoose.connect(config.db) // if you want local use 'mongodb://localhost'
 	.then( () => {
     console.log('Connection to the Atlas Cluster is successful!')
     })
 	.catch(error=>console.log(error));
-	console.log('connected to '+ process.env.MONGODB_URI);
+	console.log('connection to database failed');
 	
 	
 }

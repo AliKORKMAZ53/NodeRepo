@@ -1,0 +1,4 @@
+runtime: nodejs12
+env_variables:
+    MONGODB_URI: "mongodb+srv://conqueror53:conqueror53@cluster0.jjv7i.azure.mongodb.net/vidlydb?&retryWrites=true&w=majority"
+    vidly_jwtPrivateKey: "matraksistem"
