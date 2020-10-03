@@ -14,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/storage": "^5.3.0",
     "bcrypt": "^5.0.0",
+    "busboy": "^0.3.1",
     "compression": "^1.7.4",
     "config": "^3.3.1",
     "express": "^4.17.1",
@@ -30,6 +32,8 @@
     "moment": "^2.27.0",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.25",
+    "multer": "^1.4.2",
+    "multiparty": "^4.2.2",
     "nodemon": "^2.0.4",
     "npm-i": "0.0.2",
     "supertest": "^3.4.2",

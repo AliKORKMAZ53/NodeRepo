@@ -7,11 +7,13 @@ const auth=require('../routes/auth');
 const users=require('../routes/users');
 const error= require('../middleware/error');
 const returns=require('../routes/returns');
+const gcloud=require('../routes/gcloud');
 
 module.exports=function(app){
 	
 	app.use(express.json());
 	app.use('/genres',genresjs);
+	app.use('/gcloud', gcloud);
 	app.use('/customers', customers);
 	app.use('/auth',auth);
 	app.use('/movies', movies);

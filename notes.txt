@@ -1,5 +1,7 @@
 $env:vidly_jwtPrivateKey="mySecureKey"
 
+$env:GOOGLE_APPLICATION_CREDENTIALS="‪F:\node js\vidly\mytrial-64015bb22848.json"
+
 git degisiklik deneme
 
 git ikinci deneme
@@ -16,14 +18,196 @@ branch ları görme
 
 git branch
 
+master a pushlama //origin yazmassan boku yiyo
+
+git push origin master
+
 master olmayan newherokuya pushlama
 
 git push origin newheroku:master
 
 
-server bağlantıları
+mongo server bağlantıları
 
 mongodb://heroku_0bsffdlr:aliko1@ds013486.mlab.com:13486/heroku_0bsffdlr
 
 mongodb+srv://conqueror53:conqueror53@cluster0.jjv7i.azure.mongodb.net/vidlydb?retryWrites=true&w=majority
 
+----
+
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+  .addFormDataPart("file","/path/to/file",
+    RequestBody.create(MediaType.parse("application/octet-stream"),
+    new File("/path/to/file")))
+  .addFormDataPart("file","/path/to/file",
+    RequestBody.create(MediaType.parse("application/octet-stream"),
+    new File("/path/to/file")))
+  .build();
+Request request = new Request.Builder()
+  .url("https://mytrial-290919.oa.r.appspot.com/gcloud/uploadwithmultipart")
+  .method("POST", body)
+  .build();
+Response response = client.newCall(request).execute();
+
+
+---
+
+router.post('/uploadwithmultipart', async(req,res)=>{
+	
+	var busboy = new Busboy({ headers: req.headers });
+	const bucket = storage.bucket('buketdeneme');
+	let mimtype;
+	var saveTo=[];
+	
+	
+    busboy.on('file', async function(name, file, filename, encoding, mimetype) {
+    var number=2;//parseInt(filename);
+	 
+	 var i;
+	  for(i=0; i<number;i++){
+		  console.log('File [' + name + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype+', number: '+number+'-'+i);
+		  const imageExtension = filename.split('.')[filename.split('.').length - 1];
+		 
+		  var randomname=(Math.floor((Math.random() * 100) + 1)).toString()+'.'+imageExtension;
+		  saveTo[i] = path.join(os.tmpdir(), randomname);
+		  file.pipe(fs.createWriteStream(saveTo[i]));
+	      mimtype=mimetype;
+	  
+	  await bucket.upload(saveTo[i], {
+        resumable: true,
+		gzip: true,
+        metadata:{
+			metadata:{
+                contentType:mimtype
+			}
+			}
+    })
+    .then( () => {
+        return res.json({message: "Image Uploaded Successfully"});
+    })
+    .catch(err => {
+        console.error(err);
+        return res.status(400).send(JSON.stringify(err, ["message", "arguments", "type", "name"]));
+    });
+	  }
+	  
+	  
+	  
+    });
+
+    req.pipe(busboy);
+	
+	
+});
+---
+File [file]: filename: 1.jpg, encoding: 7bit, mimetype: image/jpeg, number: 2-0
+File [file]: filename: 2.jpg, encoding: 7bit, mimetype: image/jpeg, number: 2-0
+File [file]: filename: 2.jpg, encoding: 7bit, mimetype: image/jpeg, number: 2-1
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+
+---------AYRI AYRI FİLE GÖNDERİMİYLE ÇALIŞAN BUSBOY POST KODU------------
+router.post('/uploadwithmultipart', async(req,res)=>{
+	
+	var busboy = new Busboy({ headers: req.headers });
+	const bucket = storage.bucket('buketdeneme');
+	let mimtype;
+	var saveTo;
+	
+	
+    busboy.on('file', async function(name, file, filename, encoding, mimetype) {
+    
+	 
+		  console.log('File [' + name + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype+', number: '/*+number+'-'+i*/);
+		  const imageExtension = filename.split('.')[filename.split('.').length - 1];
+		 
+		  var randomname=(Math.floor((Math.random() * 100) + 1)).toString()+'.'+imageExtension;
+		  saveTo = path.join(os.tmpdir(), randomname);
+		  file.pipe(fs.createWriteStream(saveTo));
+	      mimtype=mimetype;
+	  
+	  await bucket.upload(saveTo, {
+        resumable: true,
+		gzip: true,
+        metadata:{
+			metadata:{
+                contentType:mimtype
+			}
+			}
+    })
+    .then( () => {
+       // return res.json({message: "Image Uploaded Successfully"});
+    })
+    .catch(err => {
+        console.error(err);
+       // return res.status(400).send(JSON.stringify(err, ["message", "arguments", "type", "name"]));
+    });
+	  
+	  
+	  
+	  
+    });
+
+    req.pipe(busboy);
+	
+	busboy.on('finish', function() {
+      console.log('Done parsing form!');
+      res.writeHead(200, { Connection: 'close', Location: '/uploadwithmultipart' });
+      res.end();
+    });
+	
+	
+});
+
+---ÇOĞUL FİLE GÖNDERME KODU /TEKİL OLARAK DA İŞE YARIYOR/ EDITOR'S CHIOCE---
+router.post('/uploadwithmultipart', async(req,res)=>{
+	
+	var busboy = new Busboy({ headers: req.headers });
+	const bucket = storage.bucket('buketdeneme');
+	let mimtype;
+	var saveTo=[];
+	
+	
+    busboy.on('file', async function(name, file, filename, encoding, mimetype) {
+    var number=1;//parseInt(filename);
+	 
+	 var i;
+	  for(i=0; i<number;i++){
+		  console.log('File [' + name + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype+', number: '+number+'-'+i);
+		  const imageExtension = filename.split('.')[filename.split('.').length - 1];
+		 
+		  var randomname=(Math.floor((Math.random() * 100) + 1)).toString()+'.'+imageExtension;
+		  saveTo[i] = path.join(os.tmpdir(), randomname);
+		  file.pipe(fs.createWriteStream(saveTo[i]));
+	      mimtype=mimetype;
+	  
+	  await bucket.upload(saveTo[i], {
+        resumable: true,
+		gzip: true,
+        metadata:{
+			metadata:{
+                contentType:mimtype
+			}
+			}
+    })
+    .then( () => {
+       console.log("success");
+    })
+    .catch(err => {
+        console.error(err);
+        return res.status(400).send(JSON.stringify(err, ["message", "arguments", "type", "name"]));
+    });
+	  }
+
+});
+ busboy.on('finish', function() {
+      console.log('Done parsing form!');
+      res.writeHead(200, { Connection: 'close', Location: '/uploadwithmultipart' });
+      res.end();
+	  
+    });
+	
+req.pipe(busboy);
+});

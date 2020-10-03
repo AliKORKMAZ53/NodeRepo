@@ -1,6 +1,7 @@
 const winston = require('winston');
 require('winston-mongodb');
 require('express-async-errors');
+const config=require('config');
 
 module.exports=function(){
 	
@@ -13,7 +14,7 @@ process.on('unhandledRejection', (ex)=>{
 });
 
 winston.add(new winston.transports.File({filename:'logfile.log'}));
-winston.add(new winston.transports.MongoDB({db:'mongodb://localhost/vidly', 
+winston.add(new winston.transports.MongoDB({db:config.get('db'), 
 level:'info'}));
 
 }
